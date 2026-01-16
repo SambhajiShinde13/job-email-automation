@@ -14,11 +14,16 @@ import org.springframework.stereotype.Service;
 import java.io.File;
 
 @Service
-@RequiredArgsConstructor
 @Slf4j
 public class EmailService {
 
     private final JavaMailSender mailSender;
+
+
+
+    public EmailService(JavaMailSender mailSender) {
+        this.mailSender = mailSender;
+    }
 
     @Value("${app.resume.path}")
     private String resumePath;
