@@ -1,0 +1,52 @@
+version: '3.8'
+
+services:
+  mysql:
+    image: mysql:8.0
+    container_name: job-automation-db
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpassword
+      MYSQL_DATABASE: job_automation
+      MYSQL_USER: jobapp
+      MYSQL_PASSWORD: jobapppassword
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+    networks:
+      - job-automation-network
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  app:
+    build: .
+    container_name: job-automation-app
+    depends_on:
+      mysql:
+        condition: service_healthy
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://mysql:3306/job_automation
+      SPRING_DATASOURCE_USERNAME: jobapp
+      SPRING_DATASOURCE_PASSWORD: jobapppassword
+      # Add your email credentials here
+      SPRING_MAIL_USERNAME: ${GMAIL_ADDRESS}
+      SPRING_MAIL_PASSWORD: ${GMAIL_APP_PASSWORD}
+      APP_SENDER_NAME: ${SENDER_NAME}
+      APP_SENDER_PHONE: ${SENDER_PHONE}
+      APP_SENDER_LINKEDIN: ${SENDER_LINKEDIN}
+    ports:
+      - "8080:8080"
+    networks:
+      - job-automation-network
+    restart: unless-stopped
+
+volumes:
+  mysql_data:
+    driver: local
+
+networks:
+  job-automation-network:
+    driver: bridge

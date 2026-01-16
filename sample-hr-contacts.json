@@ -1,0 +1,42 @@
+[
+  {
+    "hrName": "Sarah Johnson",
+    "email": "careers@techcorp.com",
+    "company": "TechCorp",
+    "position": "Java Developer",
+    "notes": "Found on LinkedIn - actively hiring",
+    "active": true
+  },
+  {
+    "hrName": "Michael Chen",
+    "email": "recruitment@innovatesoft.com",
+    "company": "InnovateSoft",
+    "position": "Backend Developer",
+    "notes": "Job posting on company website",
+    "active": true
+  },
+  {
+    "hrName": "Emily Davis",
+    "email": "hr@datatech.com",
+    "company": "DataTech Solutions",
+    "position": "Full Stack Developer",
+    "notes": "Referred by colleague",
+    "active": true
+  },
+  {
+    "hrName": "David Wilson",
+    "email": "jobs@cloudservices.com",
+    "company": "Cloud Services Inc",
+    "position": "Software Engineer",
+    "notes": "From job portal",
+    "active": true
+  },
+  {
+    "hrName": "Jessica Martinez",
+    "email": "talent@webinnovators.com",
+    "company": "Web Innovators",
+    "position": "Java Spring Boot Developer",
+    "notes": "Company career page",
+    "active": true
+  }
+]
