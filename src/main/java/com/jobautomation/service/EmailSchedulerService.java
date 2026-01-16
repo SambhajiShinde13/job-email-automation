@@ -18,11 +18,15 @@ import java.util.List;
  * Scheduler service that automatically sends emails every weekday at 9:30 AM
  */
 @Service
-@RequiredArgsConstructor
 @Slf4j
 public class EmailSchedulerService {
 
     private final HRContactRepository hrContactRepository;
+
+    public EmailSchedulerService(HRContactRepository hrContactRepository,EmailService emailService) {
+        this.hrContactRepository = hrContactRepository;
+        this.emailService= emailService;
+    }
     private final EmailService emailService;
 
     private static final String TEST_EMAIL = "sambhashinde01@gmail.com";
