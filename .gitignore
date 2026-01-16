@@ -1,15 +1,18 @@
-# Compiled class files
+# ===============================
+# Java / Maven
+# ===============================
 *.class
 target/
-*.jar
-*.war
-*.ear
 
-# Log files
+# ===============================
+# Logs
+# ===============================
 logs/
 *.log
 
-# Package Files
+# ===============================
+# Archives
+# ===============================
 *.jar
 *.war
 *.ear
@@ -17,7 +20,9 @@ logs/
 *.tar.gz
 *.rar
 
-# Maven
+# ===============================
+# Maven wrapper & temp files
+# ===============================
 .mvn/
 mvnw
 mvnw.cmd
@@ -29,7 +34,9 @@ release.properties
 dependency-reduced-pom.xml
 buildNumber.properties
 
-# IDE Files
+# ===============================
+# IDE files
+# ===============================
 .idea/
 *.iml
 .vscode/
@@ -37,18 +44,26 @@ buildNumber.properties
 .project
 .classpath
 
-# OS Files
+# ===============================
+# OS files
+# ===============================
 .DS_Store
 Thumbs.db
 
-# Application specific
+# ===============================
+# Environment & Secrets (VERY IMPORTANT)
+# ===============================
 application.properties
 .env
 
-# Resume files (keep these private)
+# ===============================
+# Resume / Attachments (PRIVATE)
+# ===============================
 resume/
 *.pdf
 
-# Database
+# ===============================
+# Local databases
+# ===============================
 *.db
 *.sqlite
