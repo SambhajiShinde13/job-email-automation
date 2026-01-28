@@ -69,45 +69,53 @@ public class EmailService {
     }
 
     private String buildSubject(HRContact contact) {
-        return "Application for Software Engineer at " + contact.getCompany();
+        return "Application – Software Engineer | 2+ Years Java & Spring Boot | Immediate Joiner" + contact.getCompany();
     }
 
     private String buildEmailBody(HRContact contact) {
 
         return """
-                 <html>
-                 <body style="font-family: Arial, sans-serif; line-height:1.6; font-size:14px; color:#333;">
-                    \s
-                     <p>Dear %s,</p>
-                 
-                     <p>I hope you are doing well.</p>
-                 
-                     <p>I am writing to express my interest in the <b>Software Engineer</b> position at <b>%s</b>.</p>
-                 
-                     <p>
-                         I have hands-on experience in Java, Spring Boot, REST APIs, and AWS, and recently built an
-                         event-driven microservices system using Apache Kafka.
-                     </p>
-                 
-                     <p>Please find my resume attached for your review.</p>
-                 
-                     <p>
-                         Thank you for your time and consideration. I would welcome the opportunity to discuss how I can contribute to your team.
-                     </p>
-                 
-                     <p>
-                         Warm regards,<br/>
-                         <b>Sambhaji Shinde</b><br/>
-                         Phone: +91-9716321313<br/>
-                         Email: sambhajishinde4454@gmail.com<br/>
-                         LinkedIn:\s
-                         <a href="https://linkedin.com/in/sambhajishinde13">
-                             https://linkedin.com/in/sambhajishinde13
-                         </a>
-                     </p>
-                 
-                 </body>
-                 </html>
+                  
+                  <html>
+                  <body style="font-family: Arial, sans-serif; line-height:1.6; font-size:14px; color:#333;">
+                  
+                  <p>Dear %s,</p>
+                  
+                  <p>I hope you are doing well.</p>
+                  
+                  <p>
+                  I am writing to express my interest in the <b>Software Engineer</b> position at <b>%s</b>.
+                  </p>
+                  
+                  <p>
+                  I have 2+ years of experience in backend development using <b>Java, Spring Boot, REST APIs, MySQL, and AWS</b>.\s
+                  I have worked on developing scalable RESTful services and recently built a microservices-based system using Apache Kafka.
+                  </p>
+                  
+                  <p>
+                  I am currently available to join immediately and would welcome the opportunity to contribute to your team.
+                  </p>
+                  
+                  <p>Please find my resume attached for your review.</p>
+                  
+                  <p>
+                  Thank you for your time and consideration. I look forward to hearing from you.
+                  </p>
+                  
+                  <p>
+                  Best regards,<br/>
+                  <b>Sambhaji Shinde</b><br/>
+                  Phone: +91-9716321313<br/>
+                  Email: sambhashinde4454@gmail.com<br/>
+                  LinkedIn:\s
+                  <a href="https://linkedin.com/in/sambhashinde">
+                  https://linkedin.com/in/sambhashinde
+                  </a>
+                  </p>
+                  
+                  </body>
+                  </html>
+                  
                  
                 """.formatted(
                 contact.getHrName(),
