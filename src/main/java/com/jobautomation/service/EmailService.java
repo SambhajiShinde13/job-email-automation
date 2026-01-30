@@ -69,7 +69,7 @@ public class EmailService {
     }
 
     private String buildSubject(HRContact contact) {
-        return "Application – Software Engineer | 2+ Years Java & Spring Boot | Immediate Joiner" + contact.getCompany();
+        return "Application – Software Engineer | 2+ Years Java & Spring Boot | Immediate Joiner " + contact.getCompany();
     }
 
     private String buildEmailBody(HRContact contact) {

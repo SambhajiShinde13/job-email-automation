@@ -38,9 +38,11 @@ public class EmailSchedulerService {
      * Scheduled task that runs every weekday at 9:30 AM
      * Cron: 0 30 9 * * MON-FRI (second minute hour day month weekday)
      */
-    //@Scheduled(cron = "0 30 9 * * MON-FRI", zone = "Asia/Kolkata")
-   // @Scheduled(fixedDelay = 60000)
-    @Transactional
+    // @Scheduled(fixedDelay = 60000)
+
+
+    @Scheduled(cron = "0 30 9 * * MON-FRI", zone = "Asia/Kolkata")
+   // @Transactional
     public void sendDailyEmails() {
 
         LocalDateTime now = LocalDateTime.now();
@@ -50,10 +52,10 @@ public class EmailSchedulerService {
         log.info("📧 EMAIL AUTOMATION STARTED - {} {}", dayOfWeek, now);
         log.info("=======================================================");
 
-        if (dayOfWeek == DayOfWeek.SATURDAY || dayOfWeek == DayOfWeek.SUNDAY) {
-            log.info("⏸️ Weekend detected. Skipping email sending.");
-            return;
-        }
+//        if (dayOfWeek == DayOfWeek.SATURDAY || dayOfWeek == DayOfWeek.SUNDAY) {
+//            log.info("⏸️ Weekend detected. Skipping email sending.");
+//            return;
+//        }
 
         List<HRContact> contacts = hrContactRepository.findActiveContacts(
                 PageRequest.of(0, dailyEmailLimit)
@@ -86,8 +88,11 @@ public class EmailSchedulerService {
                 emailService.sendResumeEmail(contact);
 
                 contact.setActive(false);
+                contact.setStatus("PROCESSED");
                 contact.setEmailSentAt(LocalDateTime.now());
                 hrContactRepository.save(contact);
+
+
 
                 successCount++;
 
@@ -95,6 +100,12 @@ public class EmailSchedulerService {
 
             } catch (Exception e) {
                 failureCount++;
+
+                contact.setActive(false);
+                contact.setStatus("FAILED");
+                contact.setNotes(e.getMessage());
+                hrContactRepository.save(contact);
+
                 log.error("❌ Failed for {} : {}", contact.getEmail(), e.getMessage());
             }
         }
@@ -123,7 +134,7 @@ public class EmailSchedulerService {
     }
 
 
-    @Scheduled(fixedDelay = 600000)
+   // @Scheduled(fixedDelay = 600000)
     @Transactional
     public void sendSingleTestMail() {
 

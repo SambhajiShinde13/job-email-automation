@@ -33,6 +33,9 @@ public class HRContact {
     @Column(nullable = false)
     private Boolean active = true;
 
+    @Column(nullable = false)
+    private String status = "ACTIVE";
+
     @Column(name = "created_at", columnDefinition = "DATETIME")
     private LocalDateTime createdAt;
 
